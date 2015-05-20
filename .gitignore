@@ -9,4 +9,4 @@ db_*.py
 
 config.py
 
-.db
+*.db
