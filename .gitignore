@@ -2,11 +2,7 @@
 venv
 tmp
 db_repository
-
 db_*.py
-
 *.pyc
-
 config.py
-
 *.db
