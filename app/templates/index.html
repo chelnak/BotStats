@@ -1,0 +1,36 @@
+<br />
+
+#{% extends "base.html" %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title">About</h2>
+                </div>
+                <div class="panel-body text-center">
+                    Hello! I am a useless Reddit bot that monitors comments on /r/DinosaurDrawings.<br />
+                    I currently respond to <b>/u/DinoFactsBot +fact</b> with a random fact about Dinosaurs.<br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Some statistics</h2>
+                </div>
+                <div class="panel-body text-center">
+                    <h1>/u/DinoFactsBot has..</h1>
+                    <h2>processed {{ totalProcessed }} comments</h2>
+                    <h1>AND</h1> 
+                    <h2>replied to  {{ repliedToCount }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
