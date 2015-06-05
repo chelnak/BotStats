@@ -7,19 +7,12 @@
 
         <title>{{ title }}</title>
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-        <link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='bootstrap.min.css') }}"
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="{{ url_for('static', filename='htmll5shiv.min.js') }}></script>
-          <script src="{{ url_for('static', filename='respond.min.js') }}"></script>
-        <![endif]-->
+        <link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='css/bootstrap.min.css') }}"
 
     </head>
     <body>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -28,20 +21,50 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">/u/DinoFactsBot</a>
+                    <a class="navbar-brand">/u/DinoFactsBot</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('manage') }}">Manage</a></li>
                     </ul>
+                    {% if g.user.is_authenticated() %}
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                        </ul>
+
+                    {% endif %}
+
                 </div><!--/.nav-collapse -->
           </div>
         </nav>
         <div class="container">
-            <div class="starter-template">
                 <br>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                                <li>{{ message }} </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+    
                 {% block content %}{% endblock %}
-            </div>
         </div>
+
+        <!-- Script stuff -->
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="{{ url_for('static', filename='js/htmll5shiv.min.js') }}></script>
+          <script src="{{ url_for('static', filename='js/respond.min.js') }}"></script>
+        <![endif]-->
+
+        <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script data-require="bootstrap@*" data-semver="3.1.1" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
     </body>
 </html>
