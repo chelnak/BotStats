@@ -1,13 +1,19 @@
 import os
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.login import LoginManager
-from flask_googlelogin import GoogleLogin
-from config import OPENID_TMP
+import flask.ext.restless
 
 app = Flask(__name__)
 app.config.from_object('config')
-db = SQLAlchemy(app)
-googlelogin = GoogleLogin(app)
 
-from app import views, models
+#flask-sqlalchemy
+db = SQLAlchemy(app)
+
+from app import models, views
+from app.models import Fact, Log
+
+#API
+manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
+manager.create_api(Fact, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Log, methods=['GET', 'POST', 'PUT', 'DELETE'])
+

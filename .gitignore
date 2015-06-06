@@ -6,3 +6,4 @@ db_*.py
 *.pyc
 config.py
 *.db
+/static/fonts/*

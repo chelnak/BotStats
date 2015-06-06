@@ -28,14 +28,6 @@
                         <li><a href="{{ url_for('index') }}">Home</a></li>
                         <li><a href="{{ url_for('manage') }}">Manage</a></li>
                     </ul>
-                    {% if g.user.is_authenticated() %}
-
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                        </ul>
-
-                    {% endif %}
-
                 </div><!--/.nav-collapse -->
           </div>
         </nav>

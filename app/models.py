@@ -1,5 +1,4 @@
 from app import db
-from flask.ext.login import UserMixin
 import datetime
 
 class Log(db.Model):
@@ -21,6 +20,7 @@ class Fact(db.Model):
     def __repr__(self):
         return '<Fact Id: %r>' % (self.id)
 
+"""
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     google_id = db.Column(db.String(100), index=True, unique=True)
@@ -52,3 +52,5 @@ class Role(db.Model):
 
     def __repr__(self):
         return '<Role %r>' % (self.role)
+
+"""
